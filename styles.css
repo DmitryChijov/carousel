@@ -1,0 +1,131 @@
+/* рисуем круг */
+
+.wheel {                             
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-left: 50px;
+    position: absolute;
+    height: 55vw;
+    width: 55vw;
+    max-width: 500px;
+    max-height: 500px;
+    animation-name: wheel; /* щоб прив’язати правило @keyframes з CSS-селектором */
+    animation-duration: 10s;  /* для встановлення тривалості анімації. */
+    animation-iteration-count: infinite; /* встановлює, скільки разів повинна повторюватися ваша анімація. */
+    animation-timing-function: linear; /*  визначає, як анімація повинна прогресувати з часом. */
+}
+
+/* рисуем линию */
+.line {
+    background-color: black;
+    width: 50%;
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0% 0%; /* визначає, навколо якої точки обертається елемент. Це зміщуватиме початкову точку на 0% зліва та на 0% зверху, встановлюючи її в верхньому лівому куті елемента.*/
+}
+
+/* націлювання наступних елементів .line повертатиме елемент навколо його точки на ... градусів за годинниковою стрілкою*/
+.line:nth-of-type(2) {
+    transform: rotate(60deg);
+}
+
+.line:nth-of-type(3) {
+    transform: rotate(120deg);
+}
+
+.line:nth-of-type(4) {
+    transform: rotate(180deg);
+}
+
+.line:nth-of-type(5) {
+    transform: rotate(240deg);
+}
+
+.line:nth-of-type(6) {
+    transform: rotate(300deg);
+}
+
+/* рисуем кабину */
+
+.cabin {
+    background-color: red;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    border: 2px solid;
+    transform-origin: 50% 0%; /*Це зробить початкову точку зміщеною на 50% зліва та 0% зверху, розмістивши її посередині верхнього краю елемента.*/
+    animation: cabins 10s ease-in-out infinite; /* Це встановить властивості animation-name, animation-duration, animation-timing-function та animation-iteration-count в такому порядку. */
+
+}
+
+.cabin:nth-of-type(1) {
+    right: -8.5%;
+    top: 50%;
+}
+
+.cabin:nth-of-type(2) {
+    right: 17%;
+    top: 93.5%;
+}
+
+.cabin:nth-of-type(3) {
+    right: 67%;
+    top: 93.5%;
+}
+
+.cabin:nth-of-type(4) {
+    left: -8.5%;
+    top: 50%;
+}
+
+.cabin:nth-of-type(5) {
+    left: 17%;
+    top: 7%;
+}
+
+.cabin:nth-of-type(6) {
+    right: 17%;
+    top: 7%;
+}
+
+/* В-правило @keyframes використовують для визначення потоку CSS-анімації. 
+В межах правила @keyframes ви можете створити селектори для певних точок в послідовності анімації, 
+як-от 0% або 25%, або використати from та to, щоб визначити початок та кінець послідовності.
+Правила @keyframes вимагають призначення їм імені, яке ви використовуєте в інших правилах для посилання.  */
+
+@keyframes wheel {
+    0% {
+      transform: rotate(0deg); /* Це розпочне анімацію без обертання. */
+    }
+
+    100% {
+        transform: rotate(360deg); /* Завдяки цьому ваша анімація завершить повний оберт. */
+    }
+
+}
+
+@keyframes cabins {
+    0% {
+        transform: rotate(0deg); /* Це розпочне анімацію без обертання. */
+        
+      }
+
+      25% {
+        background-color: yellow;
+      }
+
+      50% {
+        background-color: purple;   /* Це буде застосовано в середині циклу анімації */
+      }
+
+      75% {
+        background-color: yellow;
+      }
+  
+      100% {
+          transform: rotate(-360deg); /* Завдяки цьому ваша анімація завершить повний оберт. */
+      }
+}
+
